@@ -24,6 +24,7 @@ class QLearningTable:
     self.actions = actions
     self.learning_rate = learning_rate
     self.reward_decay = reward_decay
+    self.count = 0
     self.q_table = pd.DataFrame(columns=self.actions, dtype=np.float64)
 
   # 90% Chooses preferred action and 10% randomly for extra possibilities
@@ -179,6 +180,9 @@ class SmartAgent(Agent):
   def reset(self):
     super(SmartAgent, self).reset()
     print(self.qtable.q_table)
+    self.qtable.count += 1
+    if self.qtable.count == 100:
+      self.qtable.q_table.to_excel(r'QLearningTable.xlsx', sheet_name='QLearningTable', index = False)
     self.new_game()
   
   # Start the new game and store actions and states for the reinforcement learning
@@ -262,7 +266,7 @@ def main(unused_argv):
             use_raw_units=True,
             raw_resolution=64,
         ),
-        step_mul=128, # How fast it runs the game
+        step_mul=255, # How fast it runs the game
         disable_fog=True, # Too see everything in the minimap
     ) as env:
       run_loop.run_loop([agent1, agent2], env, max_episodes=1000) # Control both agents instead of one
