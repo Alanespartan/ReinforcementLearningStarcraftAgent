@@ -266,7 +266,7 @@ def main(unused_argv):
             use_raw_units=True,
             raw_resolution=64,
         ),
-        step_mul=255, # How fast it runs the game
+        step_mul=128, # How fast it runs the game
         disable_fog=True, # Too see everything in the minimap
     ) as env:
       run_loop.run_loop([agent1, agent2], env, max_episodes=1000) # Control both agents instead of one
