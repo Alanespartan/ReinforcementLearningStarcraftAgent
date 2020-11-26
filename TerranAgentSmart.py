@@ -10,8 +10,8 @@ You should have received a copy of the GNU General Public License along with thi
 # Units PYSC2: https://github.com/deepmind/pysc2/blob/master/pysc2/lib/units.py 
 # Functions PYSC2: https://github.com/deepmind/pysc2/blob/master/pysc2/lib/actions.py 
 import random
-import numpy as np
-import pandas as pd
+import numpy as np # Mathematical functions
+import pandas as pd  # Manipulate and analize of data
 import os
 from absl import app
 from pysc2.agents import base_agent
@@ -40,14 +40,16 @@ class QLearningTable:
   # Takes the state and action and update table accordingly to learn over time
   def learn(self, s, a, r, s_):
     self.check_state_exist(s_)
-    q_predict = self.q_table.loc[s, a]
+    q_predict = self.q_table.loc[s, a] # Get the value that was given for taking the action when we were first in the state
+    # Determine the maximum possible value across all actions in the current state
+    # and then discount it by the decay rate (0.9) and add the reward we received (can be terminal or not)
     if s_ != 'terminal':
       q_target = r + self.reward_decay * self.q_table.loc[s_, :].max()
-    else:
-      q_target = r
+    else: # Reward from last step of game is better
+      q_target = r 
     self.q_table.loc[s, a] += self.learning_rate * (q_target - q_predict)
 
-  def check_state_exist(self, state):
+  def check_state_exist(self, state): # Check to see if the state is in the QTable already, and if not it will add it with a value of 0 for all possible actions.
     if state not in self.q_table.index:
       self.q_table = self.q_table.append(pd.Series([0] * len(self.actions), index=self.q_table.columns, name=state))
 
@@ -81,7 +83,9 @@ class Agent(base_agent.BaseAgent):
 
   def get_distances(self, obs, units, xy):
     units_xy = [(unit.x, unit.y) for unit in units]
-    return np.linalg.norm(np.array(units_xy) - np.array(xy), axis=1)
+    return np.linalg.norm(np.array(units_xy) - np.array(xy), axis=1) # Normalize the array
+
+  # AGENT ACTIONS 
 
   def step(self, obs):
     super(Agent, self).step(obs)
@@ -174,6 +178,7 @@ class SmartAgent(Agent):
 
   def reset(self):
     super(SmartAgent, self).reset()
+    print(self.qtable.q_table)
     self.new_game()
   
   # Start the new game and store actions and states for the reinforcement learning
