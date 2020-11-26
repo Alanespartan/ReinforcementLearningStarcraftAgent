@@ -6,3 +6,6 @@ Starcraft Smart Agent
 ```
 python TerranAgentSmart.py
 ```
+
+# Link to medium tutorial
+https://a01701804.medium.com/build-a-reinforcement-learning-terran-agent-with-pysc2-2-0-framework-c6be51b13d48
