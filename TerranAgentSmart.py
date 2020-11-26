@@ -6,6 +6,9 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 You should have received a copy of the GNU General Public License along with this program. If not, see https://www.gnu.org/licenses/.
 '''
+# USEFUL LINKS FOR THE PROJECT
+# Units PYSC2: https://github.com/deepmind/pysc2/blob/master/pysc2/lib/units.py 
+# Functions PYSC2: https://github.com/deepmind/pysc2/blob/master/pysc2/lib/actions.py 
 import random
 import numpy as np
 import pandas as pd
