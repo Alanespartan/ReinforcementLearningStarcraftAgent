@@ -1,9 +1,15 @@
 # Reinforcement Learning Starcraft Agent Project
 
-Video game inspired by PT Silent Hill with the intent of generating a visual experience with a certain degree of suspense through the manipulation of events within the game, such as: repetition of scenarios, interaction with objects on the stage, random changes of lights, aleatory movement of objects and sound manipulation.
+## System Requirements
+* PySC2 2.0 framework installed
+* Pandas python library
+* Numpy python library
+* Basic python programming skills
 
-Free assets from the community were used to focus on the development of the code of all the events in game.
+## Run Agent
+```
+python TerranAgentSmart.py
+```
 
-# Link to LinkedIn accounts of other creators
-* René Ojeda Vega: https://www.linkedin.com/in/reneov/
-* Royer Donnet Arenas Camacho: https://www.linkedin.com/in/royer-donnet-arenas-camacho-aa885216a/
+# Link to medium tutorial
+https://a01701804.medium.com/build-a-reinforcement-learning-terran-agent-with-pysc2-2-0-framework-c6be51b13d48
