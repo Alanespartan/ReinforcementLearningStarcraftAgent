@@ -1,8 +1,12 @@
-# ReinforcementLearningStarcraftAgent
-Project for the TC2011.1 Intelligent Systems (Group 1) class
-Starcraft Smart Agent
+# Reinforcement Learning Starcraft Agent Project
 
-# How tu run
+## System Requirements
+* PySC2 2.0 framework installed
+* Pandas python library
+* Numpy python library
+* Basic python programming skills
+
+## Run Agent
 ```
 python TerranAgentSmart.py
 ```
