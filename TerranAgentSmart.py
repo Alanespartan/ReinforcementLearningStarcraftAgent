@@ -52,7 +52,7 @@ class QLearningTable:
 
   def check_state_exist(self, state): # Check to see if the state is in the QTable already, and if not it will add it with a value of 0 for all possible actions.
     if state not in self.q_table.index:
-      self.q_table = self.q_table.append(pd.Series([0] * len(self.actions), index=self.q_table.columns, name=state))
+      self.q_table = pd.concat([self.q_table, pd.DataFrame([pd.Series([0] * len(self.actions), index=self.q_table.columns, name=state)])])
 
 # Simple Agent definition (both random and learning agent use this)
 class Agent(base_agent.BaseAgent):
